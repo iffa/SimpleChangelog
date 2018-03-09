@@ -3,7 +3,6 @@ package com.robj.simplechangelog.ui.adapter;
 import android.view.View;
 import android.widget.TextView;
 
-import com.robj.radicallyreusable.base.mvp.BaseViewHolder;
 import com.robj.simplechangelog.R;
 
 /**

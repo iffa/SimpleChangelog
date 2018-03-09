@@ -1,55 +1,54 @@
 package com.robj.simplechangelog.ui.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
-import com.robj.radicallyreusable.base.base_list.BaseListRecyclerAdapter;
-import com.robj.radicallyreusable.base.mvp.BaseViewHolder;
 import com.robj.simplechangelog.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Rob J
  * @author Santeri Elo
  */
-public class ChangelogAdapter extends BaseListRecyclerAdapter<Object, BaseViewHolder> {
+public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private final static int TYPE_TITLE = 0;
     private final static int TYPE_CONTENT = 1;
+    private final Context context;
+    private final List<Object> items = new ArrayList<>();
 
     public ChangelogAdapter(Context context) {
-        super(context);
+        this.context = context;
     }
 
+    @NonNull
     @Override
-    protected BaseViewHolder createVH(ViewGroup parent, int type) {
-        switch (type) {
+    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
             case TYPE_TITLE:
                 return createTitleViewHolder(parent);
             case TYPE_CONTENT:
                 return createContentViewHolder(parent);
             default:
-                return null;
+                throw new NullPointerException("No view holder for view type " + viewType);
         }
     }
 
-    private BaseViewHolder createContentViewHolder(ViewGroup parent) {
-        return new ChangelogViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.cl_row_changelog_content, parent, false));
-    }
-
-    private BaseViewHolder createTitleViewHolder(ViewGroup parent) {
-        return new ChangelogTitleViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.cl_row_changelog_title, parent, false));
-    }
-
     @Override
-    protected void onBindViewHolder(BaseViewHolder viewHolder, int pos, int type) {
-        switch (type) {
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+        switch (getItemViewType(position)) {
             case TYPE_TITLE:
-                ChangelogTitleViewHolder titleViewHolder = (ChangelogTitleViewHolder) viewHolder;
-                titleViewHolder.bind((ChangelogTitle) getItemAtPosition(pos));
+                ChangelogTitleViewHolder titleViewHolder = (ChangelogTitleViewHolder) holder;
+                titleViewHolder.bind((ChangelogTitle) items.get(position));
                 break;
             case TYPE_CONTENT:
-                ChangelogViewHolder changelogViewHolder = (ChangelogViewHolder) viewHolder;
-                changelogViewHolder.bind((ChangelogItem) getItemAtPosition(pos));
+                ChangelogViewHolder changelogViewHolder = (ChangelogViewHolder) holder;
+                changelogViewHolder.bind((ChangelogItem) items.get(position));
                 break;
             default:
                 break;
@@ -57,13 +56,35 @@ public class ChangelogAdapter extends BaseListRecyclerAdapter<Object, BaseViewHo
     }
 
     @Override
-    protected int getViewType(int position) {
-        Object o = getItemAtPosition(position);
-        if (o instanceof ChangelogTitle)
+    public int getItemViewType(int position) {
+        Object item = items.get(position);
+        if (item instanceof ChangelogTitle)
             return TYPE_TITLE;
-        else if (o instanceof ChangelogItem)
+        else if (item instanceof ChangelogItem)
             return TYPE_CONTENT;
         else
-            return super.getViewType(position);
+            return super.getItemViewType(position);
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    private BaseViewHolder createContentViewHolder(ViewGroup parent) {
+        return new ChangelogViewHolder(inflate(R.layout.cl_row_changelog_content, parent));
+    }
+
+    private BaseViewHolder createTitleViewHolder(ViewGroup parent) {
+        return new ChangelogTitleViewHolder(inflate(R.layout.cl_row_changelog_title, parent));
+    }
+
+    private View inflate(int layoutResId, ViewGroup parent) {
+        return LayoutInflater.from(context).inflate(layoutResId, parent, false);
+    }
+
+    public void addAll(List<Object> viewModels) {
+        items.clear();
+        items.addAll(viewModels);
     }
 }
