@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/simple_changelog_library.iml" filepath="$PROJECT_DIR$/simple_changelog_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SimpleChangelog.iml" filepath="$PROJECT_DIR$/SimpleChangelog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\me\Documents\AndroidProjects\SimpleChangelog\simple_changelog_library.iml" filepath="C:\Users\me\Documents\AndroidProjects\SimpleChangelog\simple_changelog_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/simplechangelog/simplechangelog.iml" filepath="$PROJECT_DIR$/simplechangelog/simplechangelog.iml" />
     </modules>
   </component>
