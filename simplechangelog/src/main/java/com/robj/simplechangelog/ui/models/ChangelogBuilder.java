@@ -38,6 +38,14 @@ public class ChangelogBuilder {
         return this;
     }
 
+    public ChangelogBuilder addSdkVersionRangeLineItem(int minSdkVersion, int maxSdkVersion, String line) {
+        LineItem lineItem = new LineItem(line);
+        lineItem.setMinSdkVersion(minSdkVersion);
+        lineItem.setMaxSdkVersion(maxSdkVersion);
+        this.lines.add(lineItem);
+        return this;
+    }
+
     public Changelog build() {
         return new Changelog(versionCode, title, lines);
     }
