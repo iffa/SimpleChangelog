@@ -12,6 +12,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.github.iamrobj:Radically-Reusable:0.4'
 }
