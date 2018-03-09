@@ -1,1 +1,1 @@
-include ':simplechangelog', ':app'
+include ':simplechangelog', ':sample'
