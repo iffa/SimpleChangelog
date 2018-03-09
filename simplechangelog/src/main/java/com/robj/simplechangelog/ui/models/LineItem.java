@@ -2,21 +2,40 @@ package com.robj.simplechangelog.ui.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.text.TextUtils;
 
 /**
  * @author Rob J
+ * @author Santeri Elo
  */
 public class LineItem implements Parcelable {
+    @Nullable
     private final CharSequence line;
+
+    @StringRes
+    private final int lineRes;
+
     private int minSdkVersion, maxSdkVersion;
 
-    public LineItem(CharSequence line) {
+    public LineItem(@NonNull CharSequence line) {
+        this(line, 0);
+    }
+
+    public LineItem(@StringRes int lineRes) {
+        this(null, lineRes);
+    }
+
+    private LineItem(@Nullable CharSequence line, @StringRes int lineRes) {
         this.line = line;
+        this.lineRes = lineRes;
     }
 
     protected LineItem(Parcel in) {
         line = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+        lineRes = in.readInt();
         minSdkVersion = in.readInt();
         maxSdkVersion = in.readInt();
     }
@@ -24,6 +43,7 @@ public class LineItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         TextUtils.writeToParcel(line, dest, flags);
+        dest.writeInt(lineRes);
         dest.writeInt(minSdkVersion);
         dest.writeInt(maxSdkVersion);
     }
@@ -45,8 +65,14 @@ public class LineItem implements Parcelable {
         }
     };
 
+    @Nullable
     public CharSequence getLine() {
         return line;
+    }
+
+    @StringRes
+    public int getLineRes() {
+        return lineRes;
     }
 
     public int getMinSdkVersion() {

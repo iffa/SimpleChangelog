@@ -29,7 +29,8 @@ Creating a changelog is simple:
 Changelog createChangelog() {
     Changelog changelog = new ChangelogBuilder()
         .setTitle(BuildConfig.VERSION_NAME) // Title, usually the version name
-        .addLineItem("Changelog entry") // Add a normal entry
+        .addLineItem("Changelog entry") // Add a normal text entry
+        .addLineItem(R.string.hello) // Text from resources
         .addLineItem(Html.fromHtml(getString(R.string.some_html))) // Add entry with HTML
         .addMinSdkVersionLineItem(Build.VERSION_CODES.O, "Oreo and up") // Specify minimum SDK version
         .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, "Up to Nougat") // Specify maximum SDK version

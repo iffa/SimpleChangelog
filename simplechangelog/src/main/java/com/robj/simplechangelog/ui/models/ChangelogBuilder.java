@@ -1,10 +1,13 @@
 package com.robj.simplechangelog.ui.models;
 
+import android.support.annotation.StringRes;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Rob J
+ * @author Santeri Elo
  */
 public class ChangelogBuilder {
     private String title;
@@ -20,7 +23,19 @@ public class ChangelogBuilder {
         return this;
     }
 
+    public ChangelogBuilder addLineItem(@StringRes int line) {
+        this.lines.add(new LineItem(line));
+        return this;
+    }
+
     public ChangelogBuilder addMinSdkVersionLineItem(int minSdkVersion, String line) {
+        LineItem lineItem = new LineItem(line);
+        lineItem.setMinSdkVersion(minSdkVersion);
+        this.lines.add(lineItem);
+        return this;
+    }
+
+    public ChangelogBuilder addMinSdkVersionLineItem(int minSdkVersion, @StringRes int line) {
         LineItem lineItem = new LineItem(line);
         lineItem.setMinSdkVersion(minSdkVersion);
         this.lines.add(lineItem);
@@ -34,7 +49,22 @@ public class ChangelogBuilder {
         return this;
     }
 
+    public ChangelogBuilder addMaxSdkVersionLineItem(int maxSdkVersion, @StringRes int line) {
+        LineItem lineItem = new LineItem(line);
+        lineItem.setMaxSdkVersion(maxSdkVersion);
+        this.lines.add(lineItem);
+        return this;
+    }
+
     public ChangelogBuilder addSdkVersionRangeLineItem(int minSdkVersion, int maxSdkVersion, String line) {
+        LineItem lineItem = new LineItem(line);
+        lineItem.setMinSdkVersion(minSdkVersion);
+        lineItem.setMaxSdkVersion(maxSdkVersion);
+        this.lines.add(lineItem);
+        return this;
+    }
+
+    public ChangelogBuilder addSdkVersionRangeLineItem(int minSdkVersion, int maxSdkVersion, @StringRes int line) {
         LineItem lineItem = new LineItem(line);
         lineItem.setMinSdkVersion(minSdkVersion);
         lineItem.setMaxSdkVersion(maxSdkVersion);

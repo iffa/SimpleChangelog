@@ -11,6 +11,9 @@ import com.robj.simplechangelog.ui.ChangelogPrefs;
 import com.robj.simplechangelog.ui.ChangelogUtil;
 import com.robj.simplechangelog.ui.models.ChangelogBuilder;
 
+/**
+ * @author Santeri Elo
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle(BuildConfig.VERSION_NAME)
                 .addLineItem(getString(R.string.cl_line1))
                 .addLineItem(Html.fromHtml(getString(R.string.cl_line2)))
+                .addLineItem(R.string.cl_line3)
                 .addMinSdkVersionLineItem(Build.VERSION_CODES.O, getString(R.string.cl_oreo))
                 .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, getString(R.string.cl_nougat))
                 .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, getString(R.string.cl_sdk_range));

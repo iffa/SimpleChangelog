@@ -89,7 +89,7 @@ public class ChangelogDialogFragment extends Fragment {
             if ((line.getMinSdkVersion() == 0 && line.getMaxSdkVersion() == 0)
                     || ((line.getMinSdkVersion() != 0 && line.getMinSdkVersion() <= Build.VERSION.SDK_INT) && (line.getMaxSdkVersion() == 0 || line.getMaxSdkVersion() >= Build.VERSION.SDK_INT))
                     || (line.getMaxSdkVersion() >= Build.VERSION.SDK_INT && (line.getMinSdkVersion() == 0 || line.getMinSdkVersion() <= Build.VERSION.SDK_INT))) {
-                viewModels.add(new ChangelogItem(line.getLine()));
+                viewModels.add(new ChangelogItem(line.getLine() != null ? line.getLine() : getString(line.getLineRes())));
             }
 
         ChangelogPrefs.setChangelogShown(getContext(), currentVersionCode);
