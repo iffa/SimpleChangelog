@@ -43,11 +43,13 @@ class ChangelogPresenter extends BaseMvpPresenter<ChangelogView> {
         Changelog changelog = bundle.getParcelable(CHANGELOG);
 
         viewModels.add(new ChangelogTitle(changelog.getTitle()));
+
         for (LineItem line : changelog.getLineItems())
-            if((line.getMinSdkVersion() == 0 && line.getMinSdkVersion() == 0)
-                    || Build.VERSION.SDK_INT >= line.getMinSdkVersion()
-                    || Build.VERSION.SDK_INT <= line.getMaxSdkVersion())
-            viewModels.add(new ChangelogItem(line.getLine()));
+            if ((line.getMinSdkVersion() == 0 && line.getMaxSdkVersion() == 0)
+                    || ((line.getMinSdkVersion() != 0 && line.getMinSdkVersion() <= Build.VERSION.SDK_INT) && (line.getMaxSdkVersion() == 0 || line.getMaxSdkVersion() >= Build.VERSION.SDK_INT))
+                    || (line.getMaxSdkVersion() >= Build.VERSION.SDK_INT && (line.getMinSdkVersion() == 0 || line.getMinSdkVersion() <= Build.VERSION.SDK_INT))) {
+                viewModels.add(new ChangelogItem(line.getLine()));
+            }
 
         ChangelogPrefs.setChangelogShown(context, currentVersionCode);
 
