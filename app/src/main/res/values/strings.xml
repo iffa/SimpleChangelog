@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SimpleChangelog Sample</string>
+    <string name="cl_line1">This is a line</string>
+    <string name="cl_oreo">Minimum SDK 26</string>
+    <string name="cl_nougat">Maximum SDK 24</string>
+    <string name="cl_sdk_range">From SDK 26 to 27</string>
+    <string name="btn_show">Show changelog</string>
+    <string name="btn_show_themed">Show changelog with custom style</string>
+</resources>
