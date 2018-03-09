@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="viewModel"
-            type="com.robj.simplechangelog.ui.adapter.ChangelogTitle" />
-    </data>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/changelog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:text="@{viewModel.text}"
+        android:layout_marginRight="5dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="This is where the changelog line item would be shown in the list"/>
+        android:textStyle="bold"
+        tools:text="This is where the changelog line item would be shown in the list" />
 
-</layout>
+</FrameLayout>

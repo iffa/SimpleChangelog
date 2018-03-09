@@ -1,23 +1,25 @@
 package com.robj.simplechangelog.ui.adapter;
 
+import android.view.View;
+import android.widget.TextView;
+
 import com.robj.radicallyreusable.base.mvp.BaseViewHolder;
-import com.robj.simplechangelog.databinding.ClRowChangelogTitleBinding;
+import com.robj.simplechangelog.R;
 
 /**
- * Created by Rob J on 21/09/17.
+ * @author Rob J
+ * @author Santeri Elo
  */
-
 class ChangelogTitleViewHolder extends BaseViewHolder {
+    private final TextView text;
 
-    private final ClRowChangelogTitleBinding binding;
+    public ChangelogTitleViewHolder(View itemView) {
+        super(itemView);
 
-    public ChangelogTitleViewHolder(ClRowChangelogTitleBinding binding) {
-        super(binding.getRoot());
-        this.binding = binding;
+        text = itemView.findViewById(R.id.changelog_text);
     }
 
-    public void setViewModel(ChangelogTitle viewModel) {
-        this.binding.setViewModel(viewModel);
+    public void bind(ChangelogTitle item) {
+        text.setText(item.text);
     }
-
 }
