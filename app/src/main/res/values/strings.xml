@@ -7,4 +7,7 @@
     <string name="cl_sdk_range">This line will be shown from SDK 26 to 27</string>
     <string name="btn_show">Show changelog</string>
     <string name="btn_show_themed">Show changelog with custom style</string>
+    <string name="btn_show_notification">Show with notification</string>
+    <string name="cl_notification_title">New update</string>
+    <string name="cl_notification_description">Click me to see what\'s new!</string>
 </resources>

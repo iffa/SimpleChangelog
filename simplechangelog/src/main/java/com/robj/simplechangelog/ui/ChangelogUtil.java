@@ -56,6 +56,7 @@ public class ChangelogUtil {
             e.printStackTrace();
             return;
         }
+
         int versionCode = ChangelogPrefs.getLastChangelogShown(context);
         if (versionCode > 0) {
             if (versionCode < currentVersionCode) {
@@ -65,8 +66,9 @@ public class ChangelogUtil {
                     ChangelogPrefs.setChangelogNotifShown(context, currentVersionCode);
                 }
             }
-        } else
+        } else {
             ChangelogPrefs.setChangelogNotifShown(context, currentVersionCode);
+        }
     }
 
     public static void showChangelog(Context context, Changelog changelog) {

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:text="@string/changelog_bullet" />
+        android:text="@string/cl_bullet" />
 
     <TextView
         android:id="@+id/changelog_text"
