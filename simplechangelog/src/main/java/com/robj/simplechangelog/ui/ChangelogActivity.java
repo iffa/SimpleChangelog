@@ -10,11 +10,10 @@ import com.robj.simplechangelog.R;
 import com.robj.simplechangelog.ui.fragment.ChangelogDialogFragment;
 
 /**
- * Created by Rob J on 11/06/17.
+ * @author Rob J
+ * @author Santeri Elo
  */
-
 public class ChangelogActivity extends AppCompatActivity {
-
     public static final String THEME = "THEME";
     public static final String CHANGELOG = ChangelogDialogFragment.CHANGELOG;
 
