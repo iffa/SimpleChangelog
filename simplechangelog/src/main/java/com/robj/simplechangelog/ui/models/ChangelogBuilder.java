@@ -7,14 +7,8 @@ import java.util.List;
  * @author Rob J
  */
 public class ChangelogBuilder {
-    private int versionCode;
     private String title;
     private List<LineItem> lines = new ArrayList<>();
-
-    public ChangelogBuilder setVersionCode(int versionCode) {
-        this.versionCode = versionCode;
-        return this;
-    }
 
     public ChangelogBuilder setTitle(String title) {
         this.title = title;
@@ -49,6 +43,6 @@ public class ChangelogBuilder {
     }
 
     public Changelog build() {
-        return new Changelog(versionCode, title, lines);
+        return new Changelog(title, lines);
     }
 }

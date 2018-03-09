@@ -10,19 +10,16 @@ import java.util.List;
  * @author Rob J
  */
 public class Changelog implements Parcelable {
-    private final int versionCode;
     private final String title;
     private final List<LineItem> lines;
 
-    Changelog(int versionCode, String title, List<LineItem> lines) {
-        this.versionCode = versionCode;
+    Changelog(String title, List<LineItem> lines) {
         this.title = title;
         this.lines = new ArrayList<>();
         this.lines.addAll(lines);
     }
 
     protected Changelog(Parcel in) {
-        versionCode = in.readInt();
         title = in.readString();
         lines = in.createTypedArrayList(LineItem.CREATOR);
     }
@@ -39,10 +36,6 @@ public class Changelog implements Parcelable {
         }
     };
 
-    public int getVersionCode() {
-        return versionCode;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -58,7 +51,6 @@ public class Changelog implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(versionCode);
         dest.writeString(title);
         dest.writeTypedList(lines);
     }

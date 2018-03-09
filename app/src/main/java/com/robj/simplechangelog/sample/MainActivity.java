@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void showChangelog(@StyleRes int styleRes) {
         ChangelogBuilder builder = new ChangelogBuilder()
-                .setVersionCode(BuildConfig.VERSION_CODE)
                 .setTitle(BuildConfig.VERSION_NAME)
                 .addLineItem(getString(R.string.cl_line1))
                 .addLineItem(Html.fromHtml(getString(R.string.cl_line2)))
