@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SimpleChangelog Sample</string>
     <string name="cl_line1">This is a new and amazing feature we want to tell users about</string>
+    <string name="cl_line2"><![CDATA[This line has <i>HTML elements</i> and is <b>really swagger</b>. 🔥]]></string>
     <string name="cl_oreo">This line will be shown if SDK version is at least 26</string>
     <string name="cl_nougat">This line will be shown if SDK version is 24 or under</string>
     <string name="cl_sdk_range">This line will be shown from SDK 26 to 27</string>
