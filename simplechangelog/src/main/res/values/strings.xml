@@ -3,4 +3,5 @@
     <string name="cl_error_generic">Unable to load changelog</string>
     <string name="cl_changelog">Changelog</string>
     <string name="cl_progress_changelog">Loading changelog..</string>
+    <string name="changelog_bullet">•</string>
 </resources>

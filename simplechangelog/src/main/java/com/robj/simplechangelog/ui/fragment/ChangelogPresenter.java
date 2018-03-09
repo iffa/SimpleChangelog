@@ -17,15 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Rob J on 21/09/17.
+ * @author Rob J
+ * @author Santeri Elo
  */
-
 class ChangelogPresenter extends BaseMvpPresenter<ChangelogView> {
-
-    public static final String CHANGELOG = "changelog";
-
-    public void loadChangelog(Context context, Bundle bundle) {
-        List viewModels = new ArrayList();
+    void loadChangelog(Context context, Bundle bundle) {
+        List viewModels = new ArrayList<>();
         int currentVersionCode;
         try {
             currentVersionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
@@ -35,12 +32,12 @@ class ChangelogPresenter extends BaseMvpPresenter<ChangelogView> {
             return;
         }
 
-        if (bundle == null || bundle.isEmpty() || !bundle.containsKey(CHANGELOG)) {
+        if (bundle == null || bundle.isEmpty() || !bundle.containsKey(ChangelogDialogFragment.CHANGELOG)) {
             getView().showError(R.string.cl_error_no_changelog);
             return;
         }
 
-        Changelog changelog = bundle.getParcelable(CHANGELOG);
+        Changelog changelog = bundle.getParcelable(ChangelogDialogFragment.CHANGELOG);
 
         viewModels.add(new ChangelogTitle(changelog.getTitle()));
 

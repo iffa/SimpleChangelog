@@ -8,10 +8,9 @@
         android:id="@+id/changelog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginBottom="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textStyle="bold"
-        tools:text="This is where the changelog line item would be shown in the list" />
+        tools:text="Changelog title" />
 
 </FrameLayout>

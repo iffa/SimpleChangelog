@@ -5,11 +5,9 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 
 /**
- * Created by Rob J on 25/01/18.
+ * @author Rob J
  */
-
 public class LineItem implements Parcelable {
-
     private final CharSequence line;
     private int minSdkVersion, maxSdkVersion;
 
@@ -59,12 +57,11 @@ public class LineItem implements Parcelable {
         return maxSdkVersion;
     }
 
-    public void setMinSdkVersion(int minSdkVersion) {
+    void setMinSdkVersion(int minSdkVersion) {
         this.minSdkVersion = minSdkVersion;
     }
 
-    public void setMaxSdkVersion(int maxSdkVersion) {
+    void setMaxSdkVersion(int maxSdkVersion) {
         this.maxSdkVersion = maxSdkVersion;
     }
-
 }

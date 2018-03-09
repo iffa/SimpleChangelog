@@ -25,16 +25,13 @@ public class ChangelogActivity extends AppCompatActivity {
         setContentView(R.layout.cl_activity_dialog);
         Bundle bundle = getIntent() != null && getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle();
         Fragment fragment = Fragment.instantiate(this, ChangelogDialogFragment.class.getName(), bundle);
-        pushFragment(fragment, false);
+        pushFragment(fragment);
         NotificationUtils.cancelNotification(this, NotificationUtils.CHANGELOG_ID);
     }
 
-    private void pushFragment(Fragment fragment, boolean addToBackStack) {
+    private void pushFragment(Fragment fragment) {
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        if(addToBackStack) {
-            ft.addToBackStack(fragment.getClass().getName());
-        }
         ft.replace(R.id.content_frame, fragment, fragment.getClass().getName());
         ft.commit();
     }

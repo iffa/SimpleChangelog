@@ -13,13 +13,13 @@ import com.robj.simplechangelog.R;
 class ChangelogViewHolder extends BaseViewHolder {
     private final TextView text;
 
-    public ChangelogViewHolder(View itemView) {
+    ChangelogViewHolder(View itemView) {
         super(itemView);
 
         text = itemView.findViewById(R.id.changelog_text);
     }
 
-    public void bind(ChangelogItem item) {
+    void bind(ChangelogItem item) {
         text.setText(item.text);
     }
 }

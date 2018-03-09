@@ -1,7 +1,7 @@
 package com.robj.simplechangelog.ui.adapter;
 
 /**
- * Created by Rob J on 21/09/17.
+ * @author Rob J
  */
 public class ChangelogItem {
 

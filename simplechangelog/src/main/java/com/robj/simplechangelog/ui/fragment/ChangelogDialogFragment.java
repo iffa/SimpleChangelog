@@ -1,6 +1,7 @@
 package com.robj.simplechangelog.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
@@ -13,8 +14,7 @@ import com.robj.simplechangelog.ui.adapter.ChangelogAdapter;
  * @author Santeri Elo
  */
 public class ChangelogDialogFragment extends BaseListFragment<ChangelogView, ChangelogPresenter, ChangelogAdapter, Object> implements ChangelogView {
-
-    public static final String CHANGELOG = ChangelogPresenter.CHANGELOG;
+    public static final String CHANGELOG = "changelog";
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -24,7 +24,9 @@ public class ChangelogDialogFragment extends BaseListFragment<ChangelogView, Cha
         view.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().finish();
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
             }
         });
     }
@@ -34,6 +36,7 @@ public class ChangelogDialogFragment extends BaseListFragment<ChangelogView, Cha
         return R.layout.cl_fragment_changelog;
     }
 
+    @NonNull
     @Override
     public ChangelogPresenter createPresenter() {
         return new ChangelogPresenter();
@@ -51,6 +54,5 @@ public class ChangelogDialogFragment extends BaseListFragment<ChangelogView, Cha
 
     @Override
     public void onRefresh() {
-
     }
 }

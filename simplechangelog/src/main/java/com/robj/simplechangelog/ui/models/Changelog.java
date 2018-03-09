@@ -7,20 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Rob J on 29/11/17.
+ * @author Rob J
  */
-
 public class Changelog implements Parcelable {
-
     private final int versionCode;
     private final String title;
     private final List<LineItem> lines;
 
-
-    public Changelog(int versionCode, String title, List<LineItem> lines) {
+    Changelog(int versionCode, String title, List<LineItem> lines) {
         this.versionCode = versionCode;
         this.title = title;
-        this.lines = new ArrayList();
+        this.lines = new ArrayList<>();
         this.lines.addAll(lines);
     }
 

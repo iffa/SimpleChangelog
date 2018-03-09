@@ -8,11 +8,9 @@ import android.support.annotation.DrawableRes;
 import android.support.v4.app.NotificationCompat;
 
 /**
- * Created by Rob J on 29/11/17.
+ * @author Rob J
  */
-
 class NotificationUtils {
-
     public static final int CHANGELOG_ID = 2;
 
     public static void showChangelogNotification(Context context, Intent i, String channelId, @DrawableRes int iconResId,

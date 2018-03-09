@@ -31,7 +31,7 @@
         android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/cl_row_changelog_title" />
+        tools:listitem="@layout/cl_row_changelog_content" />
 
     <LinearLayout
         android:id="@+id/progress_container"

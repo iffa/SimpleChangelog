@@ -8,11 +8,9 @@ import android.support.annotation.StyleRes;
 import com.robj.simplechangelog.ui.models.Changelog;
 
 /**
- * Created by Rob J on 29/11/17.
+ * @author Rob J
  */
-
 public class ChangelogUtil {
-
     public static boolean isChangelogRequired(Context context) {
         try {
             int currentVersionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;

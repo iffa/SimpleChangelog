@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by Rob J on 29/11/17.
+ * @author Rob J
  */
-
 public class ChangelogPrefs {
-
     private final static String PREFS = "_changelog_Prefs";
     private static final String CHANGELOG_VERSION_SHOWN = "CHANGELOG_VERSION_SHOWN";
     private static final String CHANGELOG_NOTIF_VERSION_SHOWN = "CHANGELOG_NOTIF_VERSION_SHOWN";

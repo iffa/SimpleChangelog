@@ -3,11 +3,13 @@ package com.robj.simplechangelog.ui.models;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Rob J
+ */
 public class ChangelogBuilder {
-
     private int versionCode;
     private String title;
-    private List<LineItem> lines = new ArrayList();
+    private List<LineItem> lines = new ArrayList<>();
 
     public ChangelogBuilder setVersionCode(int versionCode) {
         this.versionCode = versionCode;
