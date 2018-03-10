@@ -3,54 +3,33 @@ package com.robj.simplechangelog.ui.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.text.TextUtils;
 
 /**
  * @author Rob J
  * @author Santeri Elo
  */
-public class LineItem implements Parcelable {
-    @Nullable
-    private final CharSequence line;
-
-    @StringRes
-    private final int lineRes;
-
+public class LineItem extends BaseLineItem {
     private int minSdkVersion, maxSdkVersion;
 
     LineItem(@NonNull CharSequence line) {
-        this(line, 0);
+        super(line);
     }
 
-    LineItem(@StringRes int lineRes) {
-        this(null, lineRes);
-    }
-
-    private LineItem(@Nullable CharSequence line, @StringRes int lineRes) {
-        this.line = line;
-        this.lineRes = lineRes;
+    LineItem(int lineRes) {
+        super(lineRes);
     }
 
     private LineItem(Parcel in) {
-        line = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-        lineRes = in.readInt();
+        super(in);
         minSdkVersion = in.readInt();
         maxSdkVersion = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        TextUtils.writeToParcel(line, dest, flags);
-        dest.writeInt(lineRes);
+        super.writeToParcel(dest, flags);
         dest.writeInt(minSdkVersion);
         dest.writeInt(maxSdkVersion);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     static final Creator<LineItem> CREATOR = new Creator<LineItem>() {
@@ -65,14 +44,9 @@ public class LineItem implements Parcelable {
         }
     };
 
-    @Nullable
-    public CharSequence getLine() {
-        return line;
-    }
-
-    @StringRes
-    public int getLineRes() {
-        return lineRes;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public int getMinSdkVersion() {

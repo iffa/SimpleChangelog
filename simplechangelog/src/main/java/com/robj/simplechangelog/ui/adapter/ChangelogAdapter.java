@@ -19,6 +19,7 @@ import java.util.List;
 public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private final static int TYPE_TITLE = 0;
     private final static int TYPE_CONTENT = 1;
+    private final static int TYPE_FOOTER = 2;
     private final Context context;
     private final List<Object> items = new ArrayList<>();
 
@@ -34,6 +35,8 @@ public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 return createTitleViewHolder(parent);
             case TYPE_CONTENT:
                 return createContentViewHolder(parent);
+            case TYPE_FOOTER:
+                return createFooterViewHolder(parent);
             default:
                 throw new NullPointerException("No view holder for view type " + viewType);
         }
@@ -50,6 +53,10 @@ public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 ChangelogViewHolder changelogViewHolder = (ChangelogViewHolder) holder;
                 changelogViewHolder.bind((ChangelogItem) items.get(position));
                 break;
+            case TYPE_FOOTER:
+                ChangelogFooterViewHolder changelogFooterViewHolder = (ChangelogFooterViewHolder) holder;
+                changelogFooterViewHolder.bind((ChangelogFooter) items.get(position));
+                break;
             default:
                 break;
         }
@@ -62,6 +69,8 @@ public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             return TYPE_TITLE;
         else if (item instanceof ChangelogItem)
             return TYPE_CONTENT;
+        else if (item instanceof ChangelogFooter)
+            return TYPE_FOOTER;
         else
             return super.getItemViewType(position);
     }
@@ -77,6 +86,10 @@ public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private BaseViewHolder createTitleViewHolder(ViewGroup parent) {
         return new ChangelogTitleViewHolder(inflate(R.layout.cl_row_changelog_title, parent));
+    }
+
+    private BaseViewHolder createFooterViewHolder(ViewGroup parent) {
+        return new ChangelogFooterViewHolder(inflate(R.layout.cl_row_changelog_footer, parent));
     }
 
     private View inflate(int layoutResId, ViewGroup parent) {

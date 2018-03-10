@@ -20,13 +20,16 @@ public class Changelog implements Parcelable {
 
     private final List<LineItem> lines;
 
+    private final List<FooterLineItem> footerLines;
+
     Changelog(@StringRes int titleRes, @Nullable String title, @StringRes int subtitleRes,
-              @Nullable String subtitle, List<LineItem> lines) {
+              @Nullable String subtitle, List<LineItem> lines, List<FooterLineItem> footerLines) {
         this.titleRes = titleRes;
         this.subtitleRes = subtitleRes;
         this.title = title;
         this.subtitle = subtitle;
         this.lines = lines;
+        this.footerLines = footerLines;
     }
 
     private Changelog(Parcel in) {
@@ -35,6 +38,7 @@ public class Changelog implements Parcelable {
         title = in.readString();
         subtitle = in.readString();
         lines = in.createTypedArrayList(LineItem.CREATOR);
+        footerLines = in.createTypedArrayList(FooterLineItem.CREATOR);
     }
 
     public static final Creator<Changelog> CREATOR = new Creator<Changelog>() {
@@ -73,6 +77,10 @@ public class Changelog implements Parcelable {
         return lines;
     }
 
+    public List<FooterLineItem> getFooterLineItems() {
+        return footerLines;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -85,5 +93,6 @@ public class Changelog implements Parcelable {
         dest.writeString(title);
         dest.writeString(subtitle);
         dest.writeTypedList(lines);
+        dest.writeTypedList(footerLines);
     }
 }

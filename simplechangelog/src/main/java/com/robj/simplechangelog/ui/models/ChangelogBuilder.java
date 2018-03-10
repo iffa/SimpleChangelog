@@ -19,6 +19,8 @@ public class ChangelogBuilder {
 
     private List<LineItem> lines = new ArrayList<>();
 
+    private List<FooterLineItem> footerLines = new ArrayList<>();
+
     /**
      * Set the title for the changelog. If none is set, the default titleRes will be used instead.
      *
@@ -181,7 +183,31 @@ public class ChangelogBuilder {
         return this;
     }
 
+    /**
+     * Add a footer line item.
+     *
+     * @param line Footer line text
+     * @return Updated builder object
+     */
+    public ChangelogBuilder addFooterLineItem(CharSequence line) {
+        FooterLineItem lineItem = new FooterLineItem(line);
+        this.footerLines.add(lineItem);
+        return this;
+    }
+
+    /**
+     * Add a footer line item.
+     *
+     * @param line Footer line text (string resource)
+     * @return Updated builder object
+     */
+    public ChangelogBuilder addFooterLineItem(@StringRes int line) {
+        FooterLineItem lineItem = new FooterLineItem(line);
+        this.footerLines.add(lineItem);
+        return this;
+    }
+
     public Changelog build() {
-        return new Changelog(titleRes, title, subtitleRes, subtitle, lines);
+        return new Changelog(titleRes, title, subtitleRes, subtitle, lines, footerLines);
     }
 }

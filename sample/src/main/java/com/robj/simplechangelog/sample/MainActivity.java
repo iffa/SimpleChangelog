@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 .addLineItem(R.string.cl_line3)
                 .addMinSdkVersionLineItem(Build.VERSION_CODES.O, getString(R.string.cl_oreo))
                 .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, getString(R.string.cl_nougat))
-                .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, getString(R.string.cl_sdk_range));
+                .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, getString(R.string.cl_sdk_range))
+                .addFooterLineItem(R.string.cl_footer1)
+                .addFooterLineItem(Html.fromHtml(getString(R.string.cl_footer2)));
 
         if (customTitle.isChecked()) builder.setTitle(getString(R.string.cl_custom_title));
         if (customSubtitle.isChecked()) builder.setSubtitle(R.string.cl_custom_subtitle);

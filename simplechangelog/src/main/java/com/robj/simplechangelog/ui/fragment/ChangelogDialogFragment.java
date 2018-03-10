@@ -16,9 +16,11 @@ import com.robj.simplechangelog.R;
 import com.robj.simplechangelog.ui.ChangelogActivity;
 import com.robj.simplechangelog.ui.ChangelogPrefs;
 import com.robj.simplechangelog.ui.adapter.ChangelogAdapter;
+import com.robj.simplechangelog.ui.adapter.ChangelogFooter;
 import com.robj.simplechangelog.ui.adapter.ChangelogItem;
 import com.robj.simplechangelog.ui.adapter.ChangelogTitle;
 import com.robj.simplechangelog.ui.models.Changelog;
+import com.robj.simplechangelog.ui.models.FooterLineItem;
 import com.robj.simplechangelog.ui.models.LineItem;
 
 import java.util.ArrayList;
@@ -112,12 +114,17 @@ public class ChangelogDialogFragment extends Fragment {
 
         viewModels.add(subtitle);
 
-        for (LineItem line : changelog.getLineItems())
+        for (LineItem line : changelog.getLineItems()) {
             if ((line.getMinSdkVersion() == 0 && line.getMaxSdkVersion() == 0)
                     || ((line.getMinSdkVersion() != 0 && line.getMinSdkVersion() <= Build.VERSION.SDK_INT) && (line.getMaxSdkVersion() == 0 || line.getMaxSdkVersion() >= Build.VERSION.SDK_INT))
                     || (line.getMaxSdkVersion() >= Build.VERSION.SDK_INT && (line.getMinSdkVersion() == 0 || line.getMinSdkVersion() <= Build.VERSION.SDK_INT))) {
                 viewModels.add(new ChangelogItem(line.getLine() != null ? line.getLine() : getString(line.getLineRes())));
             }
+        }
+
+        for (FooterLineItem line : changelog.getFooterLineItems()) {
+            viewModels.add(new ChangelogFooter(line.getLine() != null ? line.getLine() : getString(line.getLineRes())));
+        }
 
         ChangelogPrefs.setChangelogShown(getContext(), currentVersionCode);
 
