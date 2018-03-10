@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         ChangelogBuilder builder = new ChangelogBuilder()
                 .setTitle(BuildConfig.VERSION_NAME);
 
-        for (int i = 1; i <= 50; i++) {
-            builder.addLineItem(getString(R.string.cl_long, i));
+        for (int i = 1; i <= 100; i++) {
+            builder.addLineItem(R.string.cl_long);
         }
 
         showChangelog(builder.build(), 0, false);
