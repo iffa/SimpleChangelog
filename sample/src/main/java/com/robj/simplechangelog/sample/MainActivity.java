@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.text.Html;
 import android.view.View;
 import android.widget.CheckBox;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             builder.addLineItem(R.string.cl_long);
         }
 
-        showChangelog(builder.build(), darkTheme.isChecked() ? R.style.Theme_AppCompat_Dialog : 0, false);
+        showChangelog(builder.build(), darkTheme.isChecked() ? R.style.Theme_SimpleChangelog_Dialog : 0, false);
     }
 
     private void showChangelog(@StyleRes int styleRes, boolean notification) {
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (customTitle.isChecked()) builder.setTitle(getString(R.string.cl_custom_title));
         if (customSubtitle.isChecked()) builder.setSubtitle(R.string.cl_custom_subtitle);
-        if (darkTheme.isChecked() && styleRes == 0) styleRes = R.style.Theme_AppCompat_Dialog;
+        if (darkTheme.isChecked() && styleRes == 0) styleRes = R.style.Theme_SimpleChangelog_Dialog;
 
         showChangelog(builder.build(), styleRes, notification);
     }

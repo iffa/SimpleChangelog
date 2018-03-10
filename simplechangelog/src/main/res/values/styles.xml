@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.SimpleChangelog.Dialog" parent="Theme.AppCompat.DayNight.Dialog">
+    <style name="Theme.SimpleChangelog.DayNight.Dialog" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.SimpleChangelog.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.SimpleChangelog.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

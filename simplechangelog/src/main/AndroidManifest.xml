@@ -4,7 +4,7 @@
     <application>
         <activity
             android:name=".ui.ChangelogActivity"
-            android:theme="@style/Theme.SimpleChangelog.Dialog" />
+            android:theme="@style/Theme.SimpleChangelog.DayNight.Dialog" />
     </application>
 
 </manifest>
