@@ -23,9 +23,7 @@ public class ChangelogActivity extends AppCompatActivity {
             throw new NullPointerException("ChangelogActivity started without required extras");
         }
 
-        if (getIntent().hasExtra(THEME)) {
-            setTheme(getIntent().getIntExtra(THEME, R.style.Theme_AppCompat_DayNight_Dialog));
-        }
+        setTheme(getIntent().getIntExtra(THEME, R.style.Theme_SimpleChangelog_Dialog));
 
         super.onCreate(savedInstanceState);
 
