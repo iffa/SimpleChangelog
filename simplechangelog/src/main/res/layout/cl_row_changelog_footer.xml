@@ -8,6 +8,7 @@
         android:id="@+id/changelog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         tools:text="This is a changelog footer item." />
 
