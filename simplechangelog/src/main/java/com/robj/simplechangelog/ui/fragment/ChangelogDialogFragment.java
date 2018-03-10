@@ -84,22 +84,30 @@ public class ChangelogDialogFragment extends Fragment {
         assert changelog != null;
 
         // Set given title or use default
-        //noinspection ConstantConditions
-        getActivity().setTitle(changelog.getTitle() != 0
-                ? changelog.getTitle() : R.string.cl_changelog_title);
+        if (changelog.getTitle() == null) {
+            //noinspection ConstantConditions
+            getActivity().setTitle(changelog.getTitleRes() != 0
+                    ? changelog.getTitleRes() : R.string.cl_changelog_title);
+        } else {
+            //noinspection ConstantConditions
+            getActivity().setTitle(changelog.getTitle());
+        }
 
         ChangelogTitle subtitle;
-        if (changelog.getSubtitle() == 0) {
+
+        if (changelog.getSubtitleRes() == 0 && changelog.getSubtitle() == null) {
+            // If no subtitle is set, default to version name
             try {
-                // If no subtitle was set, default to version name
                 String versionName = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0).versionName;
                 subtitle = new ChangelogTitle(versionName);
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
                 return;
             }
+        } else if (changelog.getSubtitleRes() != 0) {
+            subtitle = new ChangelogTitle(getString(changelog.getSubtitleRes()));
         } else {
-            subtitle = new ChangelogTitle(getString(changelog.getSubtitle()));
+            subtitle = new ChangelogTitle(changelog.getSubtitle());
         }
 
         viewModels.add(subtitle);

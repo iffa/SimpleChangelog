@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ChangelogBuilder builder = new ChangelogBuilder();
 
         if (customTitle.isChecked()) builder.setTitle(R.string.cl_custom_title);
-        if (customSubtitle.isChecked()) builder.setSubtitle(R.string.cl_custom_subtitle);
+        if (customSubtitle.isChecked()) builder.setSubtitle(getString(R.string.cl_custom_subtitle));
 
         for (int i = 1; i <= 100; i++) {
             builder.addLineItem(R.string.cl_long);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, getString(R.string.cl_nougat))
                 .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, getString(R.string.cl_sdk_range));
 
-        if (customTitle.isChecked()) builder.setTitle(R.string.cl_custom_title);
+        if (customTitle.isChecked()) builder.setTitle(getString(R.string.cl_custom_title));
         if (customSubtitle.isChecked()) builder.setSubtitle(R.string.cl_custom_subtitle);
 
         showChangelog(builder.build(), styleRes, notification);

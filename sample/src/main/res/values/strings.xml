@@ -14,8 +14,8 @@
     <string name="cl_notification_title">New update</string>
     <string name="cl_notification_description">Click me to see what\'s new!</string>
 
-    <string name="cb_custom_title">Custom title</string>
-    <string name="cb_custom_subtitle">Custom subtitle</string>
+    <string name="cb_custom_title">Custom titleRes</string>
+    <string name="cb_custom_subtitle">Custom subtitleRes</string>
 
     <string name="btn_show">Show changelog</string>
     <string name="btn_show_themed">Show changelog with custom style</string>

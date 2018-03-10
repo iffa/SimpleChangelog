@@ -1,5 +1,6 @@
 package com.robj.simplechangelog.ui.models;
 
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
 import java.util.ArrayList;
@@ -11,20 +12,31 @@ import java.util.List;
  */
 public class ChangelogBuilder {
     @StringRes
-    private int title = 0;
+    private int titleRes = 0, subtitleRes = 0;
 
-    @StringRes
-    private int subtitle = 0;
+    @Nullable
+    private String title, subtitle;
 
     private List<LineItem> lines = new ArrayList<>();
 
     /**
-     * Set the title for the changelog. If none is set, the default title will be used instead.
+     * Set the title for the changelog. If none is set, the default titleRes will be used instead.
+     *
+     * @param titleRes Title (string resource)
+     * @return Updated builder object
+     */
+    public ChangelogBuilder setTitle(int titleRes) {
+        this.titleRes = titleRes;
+        return this;
+    }
+
+    /**
+     * Set the title for the changelog. If none is set, the default titleRes will be used instead.
      *
      * @param title Title
      * @return Updated builder object
      */
-    public ChangelogBuilder setTitle(int title) {
+    public ChangelogBuilder setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -33,10 +45,22 @@ public class ChangelogBuilder {
      * Set a subtitle for the changelog. If none is set, the application's version name
      * will be used as a subtitle.
      *
+     * @param subtitleRes Subtitle (string resource)
+     * @return Updated builder object
+     */
+    public ChangelogBuilder setSubtitle(int subtitleRes) {
+        this.subtitleRes = subtitleRes;
+        return this;
+    }
+
+    /**
+     * Set the subtitle for the changelog. If none is set, the application's version name
+     * will be used as a subtitle.
+     *
      * @param subtitle Subtitle
      * @return Updated builder object
      */
-    public ChangelogBuilder setSubtitle(int subtitle) {
+    public ChangelogBuilder setSubtitle(String subtitle) {
         this.subtitle = subtitle;
         return this;
     }
@@ -158,6 +182,6 @@ public class ChangelogBuilder {
     }
 
     public Changelog build() {
-        return new Changelog(title, subtitle, lines);
+        return new Changelog(titleRes, title, subtitleRes, subtitle, lines);
     }
 }

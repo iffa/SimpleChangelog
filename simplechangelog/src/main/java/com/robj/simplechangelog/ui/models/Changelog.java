@@ -2,9 +2,9 @@ package com.robj.simplechangelog.ui.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,23 +13,27 @@ import java.util.List;
  */
 public class Changelog implements Parcelable {
     @StringRes
-    private final int title;
+    private final int titleRes, subtitleRes;
 
-    @StringRes
-    private final int subtitle;
+    @Nullable
+    private final String title, subtitle;
 
     private final List<LineItem> lines;
 
-    Changelog(@StringRes int title, @StringRes int subtitle, List<LineItem> lines) {
+    Changelog(@StringRes int titleRes, @Nullable String title, @StringRes int subtitleRes,
+              @Nullable String subtitle, List<LineItem> lines) {
+        this.titleRes = titleRes;
+        this.subtitleRes = subtitleRes;
         this.title = title;
         this.subtitle = subtitle;
-        this.lines = new ArrayList<>();
-        this.lines.addAll(lines);
+        this.lines = lines;
     }
 
     private Changelog(Parcel in) {
-        title = in.readInt();
-        subtitle = in.readInt();
+        titleRes = in.readInt();
+        subtitleRes = in.readInt();
+        title = in.readString();
+        subtitle = in.readString();
         lines = in.createTypedArrayList(LineItem.CREATOR);
     }
 
@@ -46,12 +50,22 @@ public class Changelog implements Parcelable {
     };
 
     @StringRes
-    public int getTitle() {
-        return title;
+    public int getTitleRes() {
+        return titleRes;
     }
 
     @StringRes
-    public int getSubtitle() {
+    public int getSubtitleRes() {
+        return subtitleRes;
+    }
+
+    @Nullable
+    public String getTitle() {
+        return title;
+    }
+
+    @Nullable
+    public String getSubtitle() {
         return subtitle;
     }
 
@@ -66,8 +80,10 @@ public class Changelog implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(title);
-        dest.writeInt(subtitle);
+        dest.writeInt(titleRes);
+        dest.writeInt(subtitleRes);
+        dest.writeString(title);
+        dest.writeString(subtitle);
         dest.writeTypedList(lines);
     }
 }
