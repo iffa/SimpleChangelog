@@ -19,6 +19,7 @@ import com.robj.simplechangelog.ui.models.ChangelogBuilder;
 public class MainActivity extends AppCompatActivity {
     private CheckBox customTitle;
     private CheckBox customSubtitle;
+    private CheckBox darkTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         customTitle = findViewById(R.id.cb_custom_title);
         customSubtitle = findViewById(R.id.cb_custom_subtitle);
+        darkTheme = findViewById(R.id.cb_dark);
 
         findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_show_long).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLongchangelog();
+                showLongChangelog();
             }
         });
     }
 
-    private void showLongchangelog() {
+    private void showLongChangelog() {
         ChangelogBuilder builder = new ChangelogBuilder();
 
         if (customTitle.isChecked()) builder.setTitle(R.string.cl_custom_title);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             builder.addLineItem(R.string.cl_long);
         }
 
-        showChangelog(builder.build(), 0, false);
+        showChangelog(builder.build(), darkTheme.isChecked() ? R.style.Theme_AppCompat_Dialog : 0, false);
     }
 
     private void showChangelog(@StyleRes int styleRes, boolean notification) {
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (customTitle.isChecked()) builder.setTitle(getString(R.string.cl_custom_title));
         if (customSubtitle.isChecked()) builder.setSubtitle(R.string.cl_custom_subtitle);
+        if (darkTheme.isChecked() && styleRes == 0) styleRes = R.style.Theme_AppCompat_Dialog;
 
         showChangelog(builder.build(), styleRes, notification);
     }

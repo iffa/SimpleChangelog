@@ -16,6 +16,7 @@
 
     <string name="cb_custom_title">Custom titleRes</string>
     <string name="cb_custom_subtitle">Custom subtitleRes</string>
+    <string name="cb_dark">Dark theme</string>
 
     <string name="btn_show">Show changelog</string>
     <string name="btn_show_themed">Show changelog with custom style</string>

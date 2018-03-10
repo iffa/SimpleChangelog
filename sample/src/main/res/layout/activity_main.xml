@@ -17,6 +17,12 @@
         android:layout_height="wrap_content"
         android:text="@string/cb_custom_subtitle" />
 
+    <CheckBox
+        android:id="@+id/cb_dark"
+        android:text="@string/cb_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:layout_marginTop="16dp"
         android:id="@+id/btn_show"

@@ -4,6 +4,8 @@ This library allows you to create and show a changelog dialog to the user when (
 updated your application. The library will handle the logic behind this for you, however
 you can also show the dialog manually if you so desire.
 
+[![][screen1]](https://i.imgur.com/FftRRO2.png) [![][screen2]](https://i.imgur.com/RXzRhl4.png)
+
 ## Installation
 
 SimpleChangelog is hosted on Jitpack - to add the library to your project first add
@@ -74,3 +76,5 @@ application.
 **Note**: Passing a style resource to any of the methods is optional - if no style is specified the default style 
 will be used instead (Theme.AppCompat.DayNight.Dialog).
 
+[screen1]: https://i.imgur.com/FftRRO2l.png
+[screen2]: https://i.imgur.com/RXzRhl4l.png
