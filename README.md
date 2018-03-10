@@ -6,7 +6,7 @@ you can also show the dialog manually if you so desire.
 
 ## Installation
 
-SimpleChangelog is hosted on Jitpack.io - to add the library to your project first add
+SimpleChangelog is hosted on Jitpack - to add the library to your project first add
 Jitpack as a repository in your project's root build.gradle file:
 ```gradle
 allprojects {
@@ -28,10 +28,11 @@ Creating a changelog is simple:
 ```java
 Changelog createChangelog() {
     Changelog changelog = new ChangelogBuilder()
-        .setTitle(BuildConfig.VERSION_NAME) // Title, usually the version name
-        .addLineItem("Changelog entry") // Add a normal text entry
+        .setTitle("A title") // Optional title, defaults to "Changelog"
+        .setSubtitle("A subtitle") // Optional subtitle, defaults to version name
+        .addLineItem("Changelog entry") // Add an entry
         .addLineItem(R.string.hello) // Text from resources
-        .addLineItem(Html.fromHtml(getString(R.string.some_html))) // Add entry with HTML
+        .addLineItem(Html.fromHtml(getString(R.string.some_html))) // Entry with HTML
         .addMinSdkVersionLineItem(Build.VERSION_CODES.O, "Oreo and up") // Specify minimum SDK version
         .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, "Up to Nougat") // Specify maximum SDK version
         .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, "From 8.0 to 8.1") // Specify SDK version range
@@ -64,12 +65,12 @@ ChangelogUtil.showChangelogNotifIfRequired(context,
         styleRes);
 ```
 
-The library creates a notification channel for you, all you need to do is give the channel 
+The library creates a notification channel for you: all you need to do is give the channel 
 an ID. The created notification channel is named 'Changelogs' and has medium importance,
 so notifications do not make a sound but still appear in the status bar. If you want to rename
 the notification channel, you can override the string resource 'cl_notification_channel' in your
 application.
 
-Note: Passing a style resource to any of the methods is optional - if no style is specified the default style 
+**Note**: Passing a style resource to any of the methods is optional - if no style is specified the default style 
 will be used instead (Theme.AppCompat.DayNight.Dialog).
 
