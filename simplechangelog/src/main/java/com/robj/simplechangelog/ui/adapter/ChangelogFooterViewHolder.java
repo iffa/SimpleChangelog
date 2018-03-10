@@ -1,5 +1,6 @@
 package com.robj.simplechangelog.ui.adapter;
 
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ class ChangelogFooterViewHolder extends BaseViewHolder {
         super(itemView);
 
         text = itemView.findViewById(R.id.changelog_text);
+        text.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     void bind(ChangelogFooter item) {

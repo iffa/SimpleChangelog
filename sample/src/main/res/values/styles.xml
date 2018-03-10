@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Custom theme. Extend from a dialog theme or @style/ChangelogLibraryTheme.Dialog -->
+    <!-- Custom theme -->
     <style name="CustomChangelogTheme" parent="Theme.AppCompat.Dialog">
         <!-- Lets get rowdy -->
         <item name="android:textColor">@color/colorAccent</item>
