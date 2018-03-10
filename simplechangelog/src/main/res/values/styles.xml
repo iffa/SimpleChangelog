@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.SimpleChangelog.Dialog" parent="Theme.AppCompat.DayNight.Dialog">
-        <item name="colorAccent">@color/cl_accent</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>

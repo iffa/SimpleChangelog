@@ -8,10 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Custom theme -->
+    <!--
+        If your custom theme does not extend from Theme.SimpleChangelog.Dialog,
+        make sure you set the colorAccent property for correct view tinting.
+    -->
     <style name="CustomChangelogTheme" parent="Theme.AppCompat.Dialog">
-        <!-- Lets get rowdy -->
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>

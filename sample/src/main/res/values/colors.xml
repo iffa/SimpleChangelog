@@ -2,8 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
 
-    <!-- Set the correct accent color for the changelog dialog -->
-    <color name="cl_accent">@color/colorAccent</color>
+    <!-- This overrides the library's colorAccent resource which is used for dialog theming -->
+    <color name="colorAccent">#FF4081</color>
 </resources>
