@@ -5,7 +5,7 @@
         <activity
             android:name=".ui.ChangelogActivity"
             android:label="@string/cl_changelog"
-            android:theme="@style/ChangelogLibraryTheme.Dialog" />
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
     </application>
 
 </manifest>

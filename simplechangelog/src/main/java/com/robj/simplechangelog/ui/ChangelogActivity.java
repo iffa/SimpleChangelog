@@ -20,7 +20,7 @@ public class ChangelogActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (getIntent() != null && getIntent().hasExtra(THEME)) {
-            setTheme(getIntent().getIntExtra(THEME, R.style.ChangelogLibraryTheme_Dialog));
+            setTheme(getIntent().getIntExtra(THEME, R.style.Theme_AppCompat_DayNight_Dialog));
         }
 
         super.onCreate(savedInstanceState);

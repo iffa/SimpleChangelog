@@ -71,6 +71,5 @@ the notification channel, you can override the string resource 'cl_notification_
 application.
 
 Note: Passing a style resource to any of the methods is optional - if no style is specified the default style 
-will be used instead. The default style supports the support library's DayNight-functionality
-out of the box.
+will be used instead (Theme.AppCompat.DayNight.Dialog).
 
