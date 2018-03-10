@@ -7,13 +7,15 @@
     <string name="cl_oreo">This line will be shown if SDK version is at least 26</string>
     <string name="cl_nougat">This line will be shown if SDK version is 24 or under</string>
     <string name="cl_sdk_range">This line will be shown from SDK 26 to 27</string>
+    <string name="cl_long">This changelog is very long, %1d</string>
 
     <string name="cl_notification_title">New update</string>
     <string name="cl_notification_description">Click me to see what\'s new!</string>
 
     <string name="btn_show">Show changelog</string>
     <string name="btn_show_themed">Show changelog with custom style</string>
-    <string name="btn_show_notification">Show with notification</string>
+    <string name="btn_show_notification">Show changelog (notification)</string>
+    <string name="btn_show_long">Show long changelog</string>
 
     <!-- Custom notification channel name to override default -->
     <string name="cl_notification_channel">My better channel name</string>

@@ -20,11 +20,11 @@ public class LineItem implements Parcelable {
 
     private int minSdkVersion, maxSdkVersion;
 
-    public LineItem(@NonNull CharSequence line) {
+    LineItem(@NonNull CharSequence line) {
         this(line, 0);
     }
 
-    public LineItem(@StringRes int lineRes) {
+    LineItem(@StringRes int lineRes) {
         this(null, lineRes);
     }
 
@@ -33,7 +33,7 @@ public class LineItem implements Parcelable {
         this.lineRes = lineRes;
     }
 
-    protected LineItem(Parcel in) {
+    private LineItem(Parcel in) {
         line = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
         lineRes = in.readInt();
         minSdkVersion = in.readInt();
@@ -53,7 +53,7 @@ public class LineItem implements Parcelable {
         return 0;
     }
 
-    public static final Creator<LineItem> CREATOR = new Creator<LineItem>() {
+    static final Creator<LineItem> CREATOR = new Creator<LineItem>() {
         @Override
         public LineItem createFromParcel(Parcel in) {
             return new LineItem(in);

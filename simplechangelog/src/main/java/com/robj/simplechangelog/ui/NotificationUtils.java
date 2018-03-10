@@ -13,12 +13,13 @@ import com.robj.simplechangelog.R;
 
 /**
  * @author Rob J
+ * @author Santeri Elo
  */
 class NotificationUtils {
-    public static final int CHANGELOG_ID = 2;
+    private static final int CHANGELOG_ID = 2;
 
-    public static void showChangelogNotification(Context context, Intent i, String channelId, @DrawableRes int iconResId,
-                                                 String title, String body) {
+    static void showChangelogNotification(Context context, Intent i, String channelId, @DrawableRes int iconResId,
+                                          String title, String body) {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder mBuilder =
@@ -50,9 +51,9 @@ class NotificationUtils {
         notificationManager.notify(CHANGELOG_ID, mBuilder.build());
     }
 
-    public static void cancelNotification(Context context, int id) {
+    static void cancelNotification(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(id);
+        notificationManager.cancel(CHANGELOG_ID);
     }
 
 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.robj.simplechangelog.R;
+import com.robj.simplechangelog.ui.ChangelogActivity;
 import com.robj.simplechangelog.ui.ChangelogPrefs;
 import com.robj.simplechangelog.ui.adapter.ChangelogAdapter;
 import com.robj.simplechangelog.ui.adapter.ChangelogItem;
@@ -28,7 +29,6 @@ import java.util.List;
  * @author Santeri Elo
  */
 public class ChangelogDialogFragment extends Fragment {
-    public static final String CHANGELOG = "changelog";
     private ChangelogAdapter adapter;
     private RecyclerView recyclerView;
 
@@ -76,11 +76,11 @@ public class ChangelogDialogFragment extends Fragment {
             return;
         }
 
-        if (bundle == null || bundle.isEmpty() || !bundle.containsKey(ChangelogDialogFragment.CHANGELOG)) {
+        if (bundle == null || bundle.isEmpty() || !bundle.containsKey(ChangelogActivity.CHANGELOG)) {
             throw new UnsupportedOperationException("Cannot show empty changelog!");
         }
 
-        Changelog changelog = bundle.getParcelable(ChangelogDialogFragment.CHANGELOG);
+        Changelog changelog = bundle.getParcelable(ChangelogActivity.CHANGELOG);
         assert changelog != null;
 
         viewModels.add(new ChangelogTitle(changelog.getTitle()));

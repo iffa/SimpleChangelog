@@ -14,19 +14,25 @@ import com.robj.simplechangelog.ui.fragment.ChangelogDialogFragment;
  * @author Santeri Elo
  */
 public class ChangelogActivity extends AppCompatActivity {
-    public static final String THEME = "THEME";
-    public static final String CHANGELOG = ChangelogDialogFragment.CHANGELOG;
+    public static final String THEME = "theme";
+    public static final String CHANGELOG = "changelog";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if(getIntent() != null && getIntent().hasExtra(THEME))
+        if (getIntent() != null && getIntent().hasExtra(THEME)) {
             setTheme(getIntent().getIntExtra(THEME, R.style.ChangelogLibraryTheme_Dialog));
+        }
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.cl_activity_dialog);
+
         Bundle bundle = getIntent() != null && getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle();
         Fragment fragment = Fragment.instantiate(this, ChangelogDialogFragment.class.getName(), bundle);
         pushFragment(fragment);
-        NotificationUtils.cancelNotification(this, NotificationUtils.CHANGELOG_ID);
+
+        // Cancel any notifications pointing to this activity
+        NotificationUtils.cancelNotification(this);
     }
 
     private void pushFragment(Fragment fragment) {

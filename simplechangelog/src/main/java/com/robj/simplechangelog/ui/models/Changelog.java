@@ -19,7 +19,7 @@ public class Changelog implements Parcelable {
         this.lines.addAll(lines);
     }
 
-    protected Changelog(Parcel in) {
+    private Changelog(Parcel in) {
         title = in.readString();
         lines = in.createTypedArrayList(LineItem.CREATOR);
     }
