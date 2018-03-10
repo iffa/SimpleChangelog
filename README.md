@@ -1,8 +1,9 @@
 # SimpleChangelog - a simple changelog library for Android
 
-This library allows you to create and show a changelog dialog to the user when (s)he has
-updated your application. The library will handle the logic behind this for you, however
-you can also show the dialog manually if you so desire.
+SimpleChangelog allows you to create and show a changelog dialog (and notification) to the 
+user after an update. The library will handle all the logic needed for you, however
+you can also show the dialog manually if you so desire. The library is built to be quickly
+and easily integrated into any application, old or new.
 
 [![][screen1]](https://i.imgur.com/FftRRO2.png) [![][screen2]](https://i.imgur.com/RXzRhl4.png)
 
@@ -28,19 +29,16 @@ implementation 'com.github.iamrobj:SimpleChangelog:1.3'
 Creating a changelog is simple:
 
 ```java
-Changelog createChangelog() {
-    Changelog changelog = new ChangelogBuilder()
-        .setTitle("A title") // Optional title, defaults to "Changelog"
-        .setSubtitle("A subtitle") // Optional subtitle, defaults to version name
-        .addLineItem("Changelog entry") // Add an entry
-        .addLineItem(R.string.hello) // Text from resources
-        .addLineItem(Html.fromHtml(getString(R.string.some_html))) // Entry with HTML
-        .addMinSdkVersionLineItem(Build.VERSION_CODES.O, "Oreo and up") // Specify minimum SDK version
-        .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, "Up to Nougat") // Specify maximum SDK version
-        .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, "From 8.0 to 8.1") // Specify SDK version range
-        .build();
-    
-    return changelog;
+Changelog changelog = new ChangelogBuilder()
+    .setTitle("A title") // Optional title, defaults to "Changelog"
+    .setSubtitle("A subtitle") // Optional subtitle, defaults to version name
+    .addLineItem("Changelog entry") // Add an entry
+    .addLineItem(R.string.hello) // Text from resources
+    .addLineItem(Html.fromHtml(getString(R.string.some_html))) // Entry with HTML
+    .addMinSdkVersionLineItem(Build.VERSION_CODES.O, "Oreo and up") // Specify minimum SDK version
+    .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, "Up to Nougat") // Specify maximum SDK version
+    .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, "From 8.0 to 8.1") // Specify SDK version range
+    .build();
 }
 ```
 
