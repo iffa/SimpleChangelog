@@ -2,4 +2,5 @@
     <string name="cl_changelog">Changelog</string>
     <string name="cl_bullet">•</string>
     <string name="cl_notification_channel">Changelogs</string>
+    <string name="cl_close">Close</string>
 </resources>
