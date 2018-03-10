@@ -19,7 +19,11 @@ public class ChangelogActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (getIntent() != null && getIntent().hasExtra(THEME)) {
+        if (getIntent() == null || getIntent().getExtras() == null) {
+            throw new NullPointerException("ChangelogActivity started without required extras");
+        }
+
+        if (getIntent().hasExtra(THEME)) {
             setTheme(getIntent().getIntExtra(THEME, R.style.Theme_AppCompat_DayNight_Dialog));
         }
 
@@ -27,8 +31,7 @@ public class ChangelogActivity extends AppCompatActivity {
 
         setContentView(R.layout.cl_activity_dialog);
 
-        Bundle bundle = getIntent() != null && getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle();
-        Fragment fragment = Fragment.instantiate(this, ChangelogDialogFragment.class.getName(), bundle);
+        Fragment fragment = Fragment.instantiate(this, ChangelogDialogFragment.class.getName(), getIntent().getExtras());
         pushFragment(fragment);
 
         // Cancel any notifications pointing to this activity

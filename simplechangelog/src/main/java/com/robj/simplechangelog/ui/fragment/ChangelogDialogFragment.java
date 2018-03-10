@@ -83,7 +83,26 @@ public class ChangelogDialogFragment extends Fragment {
         Changelog changelog = bundle.getParcelable(ChangelogActivity.CHANGELOG);
         assert changelog != null;
 
-        viewModels.add(new ChangelogTitle(changelog.getTitle()));
+        // Set given title or use default
+        //noinspection ConstantConditions
+        getActivity().setTitle(changelog.getTitle() != 0
+                ? changelog.getTitle() : R.string.cl_changelog_title);
+
+        ChangelogTitle subtitle;
+        if (changelog.getSubtitle() == 0) {
+            try {
+                // If no subtitle was set, default to version name
+                String versionName = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0).versionName;
+                subtitle = new ChangelogTitle(versionName);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+                return;
+            }
+        } else {
+            subtitle = new ChangelogTitle(getString(changelog.getSubtitle()));
+        }
+
+        viewModels.add(subtitle);
 
         for (LineItem line : changelog.getLineItems())
             if ((line.getMinSdkVersion() == 0 && line.getMaxSdkVersion() == 0)

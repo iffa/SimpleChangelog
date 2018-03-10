@@ -2,25 +2,34 @@ package com.robj.simplechangelog.ui.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.StringRes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Rob J
+ * @author Santeri Elo
  */
 public class Changelog implements Parcelable {
-    private final String title;
+    @StringRes
+    private final int title;
+
+    @StringRes
+    private final int subtitle;
+
     private final List<LineItem> lines;
 
-    Changelog(String title, List<LineItem> lines) {
+    Changelog(@StringRes int title, @StringRes int subtitle, List<LineItem> lines) {
         this.title = title;
+        this.subtitle = subtitle;
         this.lines = new ArrayList<>();
         this.lines.addAll(lines);
     }
 
     private Changelog(Parcel in) {
-        title = in.readString();
+        title = in.readInt();
+        subtitle = in.readInt();
         lines = in.createTypedArrayList(LineItem.CREATOR);
     }
 
@@ -36,8 +45,14 @@ public class Changelog implements Parcelable {
         }
     };
 
-    public String getTitle() {
+    @StringRes
+    public int getTitle() {
         return title;
+    }
+
+    @StringRes
+    public int getSubtitle() {
+        return subtitle;
     }
 
     public List<LineItem> getLineItems() {
@@ -51,7 +66,8 @@ public class Changelog implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(title);
+        dest.writeInt(title);
+        dest.writeInt(subtitle);
         dest.writeTypedList(lines);
     }
 }

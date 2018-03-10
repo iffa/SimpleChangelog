@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">SimpleChangelog Sample</string>
 
+    <string name="cl_custom_title">App updated</string>
+    <string name="cl_custom_subtitle">What\'s new?</string>
     <string name="cl_line1">This is a new and amazing feature we want to tell users about</string>
     <string name="cl_line2"><![CDATA[This line has <i>HTML elements</i> and is <b>really swagger</b>. 🔥]]></string>
     <string name="cl_line3">This line is straight from a string resource</string>
@@ -11,6 +13,9 @@
 
     <string name="cl_notification_title">New update</string>
     <string name="cl_notification_description">Click me to see what\'s new!</string>
+
+    <string name="cb_custom_title">Custom title</string>
+    <string name="cb_custom_subtitle">Custom subtitle</string>
 
     <string name="btn_show">Show changelog</string>
     <string name="btn_show_themed">Show changelog with custom style</string>

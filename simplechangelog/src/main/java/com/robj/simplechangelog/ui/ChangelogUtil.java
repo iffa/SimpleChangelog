@@ -2,6 +2,7 @@ package com.robj.simplechangelog.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StyleRes;
 

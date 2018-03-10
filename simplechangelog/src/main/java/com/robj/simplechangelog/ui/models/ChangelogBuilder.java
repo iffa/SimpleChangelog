@@ -10,17 +10,34 @@ import java.util.List;
  * @author Santeri Elo
  */
 public class ChangelogBuilder {
-    private String title;
+    @StringRes
+    private int title = 0;
+
+    @StringRes
+    private int subtitle = 0;
+
     private List<LineItem> lines = new ArrayList<>();
 
     /**
-     * Set a changelog title.
+     * Set the title for the changelog. If none is set, the default title will be used instead.
      *
      * @param title Title
      * @return Updated builder object
      */
-    public ChangelogBuilder setTitle(String title) {
+    public ChangelogBuilder setTitle(int title) {
         this.title = title;
+        return this;
+    }
+
+    /**
+     * Set a subtitle for the changelog. If none is set, the application's version name
+     * will be used as a subtitle.
+     *
+     * @param subtitle Subtitle
+     * @return Updated builder object
+     */
+    public ChangelogBuilder setSubtitle(int subtitle) {
+        this.subtitle = subtitle;
         return this;
     }
 
@@ -141,6 +158,6 @@ public class ChangelogBuilder {
     }
 
     public Changelog build() {
-        return new Changelog(title, lines);
+        return new Changelog(title, subtitle, lines);
     }
 }
