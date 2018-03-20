@@ -1,7 +1,6 @@
 package com.robj.simplechangelog.ui.models;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 /**

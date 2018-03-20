@@ -38,7 +38,7 @@ public class ChangelogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             case TYPE_FOOTER:
                 return createFooterViewHolder(parent);
             default:
-                throw new NullPointerException("No view holder for view type " + viewType);
+                throw new IllegalArgumentException("No view holder for view type " + viewType);
         }
     }
 
