@@ -1,5 +1,6 @@
 package com.robj.simplechangelog.ui.models;
 
+import android.support.annotation.ArrayRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
@@ -16,6 +17,9 @@ public class ChangelogBuilder {
 
     @Nullable
     private String title, subtitle;
+
+    @ArrayRes
+    private int stringArrayLines = 0;
 
     private List<LineItem> lines = new ArrayList<>();
 
@@ -86,6 +90,17 @@ public class ChangelogBuilder {
      */
     public ChangelogBuilder addLineItem(@StringRes int line) {
         this.lines.add(new LineItem(line));
+        return this;
+    }
+
+    /**
+     * Add line items from a string array resource.
+     *
+     * @param stringArray Lines (string array resource)
+     * @return Updated builder object
+     */
+    public ChangelogBuilder addLineItems(@ArrayRes int stringArray) {
+        this.stringArrayLines = stringArray;
         return this;
     }
 
@@ -208,6 +223,7 @@ public class ChangelogBuilder {
     }
 
     public Changelog build() {
-        return new Changelog(titleRes, title, subtitleRes, subtitle, lines, footerLines);
+        return new Changelog(titleRes, title, subtitleRes,
+                subtitle, lines, footerLines, stringArrayLines);
     }
 }

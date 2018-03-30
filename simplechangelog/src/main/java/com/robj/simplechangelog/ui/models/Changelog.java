@@ -2,6 +2,7 @@ package com.robj.simplechangelog.ui.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.ArrayRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
@@ -22,14 +23,19 @@ public class Changelog implements Parcelable {
 
     private final List<FooterLineItem> footerLines;
 
+    @ArrayRes
+    private final int stringArrayLine;
+
     Changelog(@StringRes int titleRes, @Nullable String title, @StringRes int subtitleRes,
-              @Nullable String subtitle, List<LineItem> lines, List<FooterLineItem> footerLines) {
+              @Nullable String subtitle, List<LineItem> lines, List<FooterLineItem> footerLines,
+              @ArrayRes int stringArrayLine) {
         this.titleRes = titleRes;
         this.subtitleRes = subtitleRes;
         this.title = title;
         this.subtitle = subtitle;
         this.lines = lines;
         this.footerLines = footerLines;
+        this.stringArrayLine = stringArrayLine;
     }
 
     private Changelog(Parcel in) {
@@ -39,6 +45,7 @@ public class Changelog implements Parcelable {
         subtitle = in.readString();
         lines = in.createTypedArrayList(LineItem.CREATOR);
         footerLines = in.createTypedArrayList(FooterLineItem.CREATOR);
+        stringArrayLine = in.readInt();
     }
 
     public static final Creator<Changelog> CREATOR = new Creator<Changelog>() {
@@ -81,6 +88,11 @@ public class Changelog implements Parcelable {
         return footerLines;
     }
 
+    @ArrayRes
+    public int getLinesArray() {
+        return stringArrayLine;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -94,5 +106,6 @@ public class Changelog implements Parcelable {
         dest.writeString(subtitle);
         dest.writeTypedList(lines);
         dest.writeTypedList(footerLines);
+        dest.writeInt(stringArrayLine);
     }
 }

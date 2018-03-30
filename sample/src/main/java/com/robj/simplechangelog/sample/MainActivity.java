@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.text.Html;
 import android.view.View;
 import android.widget.CheckBox;
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 .addMinSdkVersionLineItem(Build.VERSION_CODES.O, getString(R.string.cl_oreo))
                 .addMaxSdkVersionLineItem(Build.VERSION_CODES.N, getString(R.string.cl_nougat))
                 .addSdkVersionRangeLineItem(Build.VERSION_CODES.O, Build.VERSION_CODES.O_MR1, getString(R.string.cl_sdk_range))
+                .addLineItems(R.array.cl_array)
                 .addFooterLineItem(Html.fromHtml(getString(R.string.cl_footer1)))
                 .addFooterLineItem(Html.fromHtml(getString(R.string.cl_footer2)));
 

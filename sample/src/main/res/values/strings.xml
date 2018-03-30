@@ -9,6 +9,11 @@
     <string name="cl_oreo">This line will be shown if SDK version is at least 26</string>
     <string name="cl_nougat">This line will be shown if SDK version is 24 or under</string>
     <string name="cl_sdk_range">This line will be shown from SDK 26 to 27</string>
+    <string-array name="cl_array">
+        <item>This line is from an array resource</item>
+        <item>This line is also from an array resource</item>
+        <item>#metoo! 💖</item>
+    </string-array>
     <string name="cl_footer1"><![CDATA[Read the full changelog on our <a href="http://">website</a>.]]></string>
     <string name="cl_footer2"><![CDATA[<b>Note:</b> this is a beta release and may be unstable.]]></string>
     <string name="cl_long">This changelog is very, very long!</string>

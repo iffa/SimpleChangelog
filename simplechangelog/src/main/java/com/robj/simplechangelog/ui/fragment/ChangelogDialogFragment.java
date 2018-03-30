@@ -114,6 +114,13 @@ public class ChangelogDialogFragment extends Fragment {
 
         viewModels.add(subtitle);
 
+        if (changelog.getLinesArray() != 0) {
+            String[] lines = getResources().getStringArray(changelog.getLinesArray());
+            for (String line : lines) {
+                viewModels.add(new ChangelogItem(line));
+            }
+        }
+
         for (LineItem line : changelog.getLineItems()) {
             if ((line.getMinSdkVersion() == 0 && line.getMaxSdkVersion() == 0)
                     || ((line.getMinSdkVersion() != 0 && line.getMinSdkVersion() <= Build.VERSION.SDK_INT) && (line.getMaxSdkVersion() == 0 || line.getMaxSdkVersion() >= Build.VERSION.SDK_INT))
